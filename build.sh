@@ -12,6 +12,7 @@ IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
 TANGGAL=$(date +"%F_%H-%M")
 START=$(date +"%s")
 CLANG_VERSION=$(clang/bin/clang --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g' -e 's/[[:space:]]*$//')
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
 export PATH=$PWD/clang/bin:$PATH
 
 export ARCH=arm64
@@ -24,7 +25,7 @@ function header() {
         -d photo=$url \
         -d chat_id=$chat_id \
         -d "parse_mode=html" \
-	-d caption="<b>• NightBlade Kernel •</b>%0ABuild started on <code>Circle CI/CD</code>%0A <b>For device</b> <i>Xiaomi Poco X2/Redmi K30 (phoenix)</i>%0A<b>branch:-</b> <code>$(git rev-parse --abbrev-ref HEAD)</code>(master)%0A<b>Under commit</b> <code>$(git log --pretty=format:'"%h : %s"' -1)</code>%0A<b>Using compiler:- </b> <code>$CLANG_VERSION</code>%0A<b>Started on:- </b> <code>$(date)</code>"
+	-d caption="<b>• NightBlade Kernel •</b>%0ABuild started on <code>Circle CI/CD</code>%0A <b>For device</b> <i>Xiaomi Poco X2/Redmi K30 (phoenix)</i>%0A<b>branch:-</b> <code>$BRANCH</code>(master)%0A<b>Under commit</b> <code>$(git log --pretty=format:'"%h : %s"' -1)</code>%0A<b>Using compiler:- </b> <code>$CLANG_VERSION</code>%0A<b>Started on:- </b> <code>$(date)</code>"
 }
 
 # Push kernel to channel
@@ -72,7 +73,7 @@ fi
 # Zipping
 function zipping() {
     cd AnyKernel || exit 1
-    zip -r9 NightBladeKernel-phoenix-${TANGGAL}.zip *
+    zip -r9 NightBlade-phoenix-${BRANCH}-${TANGGAL}.zip *
     cd ..
 }
 header
