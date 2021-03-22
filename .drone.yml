@@ -17,5 +17,5 @@ steps:
       - git config --global user.email "achubadyal4@gmail.com"
       - git config --global color.ui false
       - mkdir Nb && cd Nb
-      - wget https://raw.githubusercontent.com/AtomicXZ/kernel_xiaomi_phoenix/Q-rb/build.sh
+      - wget https://raw.githubusercontent.com/AtomicXZ/kernel_xiaomi_phoenix/Q/build.sh
       - bash build.sh

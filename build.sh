@@ -2,7 +2,7 @@
 
 echo "Cloning dependencies"
 
-git clone --depth=1 https://github.com/AtomicXZ/kernel_xiaomi_phoenix.git -b Q-rb kernel
+git clone --depth=1 https://github.com/AtomicXZ/kernel_xiaomi_phoenix.git -b Q kernel
 cd kernel
 git clone --depth=1 https://github.com/kdrag0n/proton-clang clang
 
